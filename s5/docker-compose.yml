@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: bdi-postgres
+    environment:
+      POSTGRES_DB: hr_database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./hr_schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./hr_seed_data.sql:/docker-entrypoint-initdb.d/02-seed.sql
+
+volumes:
+  pgdata:

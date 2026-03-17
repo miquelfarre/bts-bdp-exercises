@@ -1,3 +1,4 @@
+import os  # This import is unused
 from fastapi import FastAPI
 
 app = FastAPI(title="BTS BDP S9 - DevOps Exercises")
